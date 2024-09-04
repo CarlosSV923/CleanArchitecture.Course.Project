@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\CleanArchitecture.Course.Project.Api.props" />
-</Project>

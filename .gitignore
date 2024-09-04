@@ -1,6 +1,6 @@
 # Compiled bin/ and obj/ folders
-bin/
-obj/
+*bin/
+*obj/
 
 # .NET Core
 project.lock.json
