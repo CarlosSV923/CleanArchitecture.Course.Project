@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "CuFzfepIr7IJViteysPuvvsyALGApgjbjL1sNadkgOgjkjfUBXCgL5Ln3qDc0RjazUjfEkjEsOPYYFU8h1oDww==",
+  "success": true,
+  "projectFilePath": "D:\\Proyectos\\Personales\\Udemy\\CSharp-CleanArchitecture\\CleanArchitecture.Course.Project\\src\\CleanArchitecture.Course.Project.Application\\CleanArchitecture.Course.Project.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\carlo\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
+    "C:\\Users\\carlo\\.nuget\\packages\\dapper\\2.1.35\\dapper.2.1.35.nupkg.sha512",
+    "C:\\Users\\carlo\\.nuget\\packages\\fluentvalidation\\11.9.2\\fluentvalidation.11.9.2.nupkg.sha512",
+    "C:\\Users\\carlo\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.2\\fluentvalidation.dependencyinjectionextensions.11.9.2.nupkg.sha512",
+    "C:\\Users\\carlo\\.nuget\\packages\\mediatr\\12.4.0\\mediatr.12.4.0.nupkg.sha512",
+    "C:\\Users\\carlo\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\carlo\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.1\\microsoft.extensions.dependencyinjection.abstractions.8.0.1.nupkg.sha512",
+    "C:\\Users\\carlo\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\8.0.1\\microsoft.extensions.logging.abstractions.8.0.1.nupkg.sha512",
+    "C:\\Users\\carlo\\.nuget\\packages\\serilog\\4.0.1\\serilog.4.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

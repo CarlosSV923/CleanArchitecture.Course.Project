@@ -1,0 +1,12 @@
+D:\Proyectos\Personales\Udemy\C# CleanArchitecture\CleanArchitecture.Course.Project\src\CleanArchitecture.Course.Project.Domain\bin\Debug\net8.0\CleanArchitecture.Course.Project.Domain.deps.json
+D:\Proyectos\Personales\Udemy\C# CleanArchitecture\CleanArchitecture.Course.Project\src\CleanArchitecture.Course.Project.Domain\bin\Debug\net8.0\CleanArchitecture.Course.Project.Domain.dll
+D:\Proyectos\Personales\Udemy\C# CleanArchitecture\CleanArchitecture.Course.Project\src\CleanArchitecture.Course.Project.Domain\bin\Debug\net8.0\CleanArchitecture.Course.Project.Domain.pdb
+D:\Proyectos\Personales\Udemy\C# CleanArchitecture\CleanArchitecture.Course.Project\src\CleanArchitecture.Course.Project.Domain\obj\Debug\net8.0\CleanArchitecture.Course.Project.Domain.GeneratedMSBuildEditorConfig.editorconfig
+D:\Proyectos\Personales\Udemy\C# CleanArchitecture\CleanArchitecture.Course.Project\src\CleanArchitecture.Course.Project.Domain\obj\Debug\net8.0\CleanArchitecture.Course.Project.Domain.AssemblyInfoInputs.cache
+D:\Proyectos\Personales\Udemy\C# CleanArchitecture\CleanArchitecture.Course.Project\src\CleanArchitecture.Course.Project.Domain\obj\Debug\net8.0\CleanArchitecture.Course.Project.Domain.AssemblyInfo.cs
+D:\Proyectos\Personales\Udemy\C# CleanArchitecture\CleanArchitecture.Course.Project\src\CleanArchitecture.Course.Project.Domain\obj\Debug\net8.0\CleanArchitecture.Course.Project.Domain.csproj.CoreCompileInputs.cache
+D:\Proyectos\Personales\Udemy\C# CleanArchitecture\CleanArchitecture.Course.Project\src\CleanArchitecture.Course.Project.Domain\obj\Debug\net8.0\CleanArchitecture.Course.Project.Domain.dll
+D:\Proyectos\Personales\Udemy\C# CleanArchitecture\CleanArchitecture.Course.Project\src\CleanArchitecture.Course.Project.Domain\obj\Debug\net8.0\refint\CleanArchitecture.Course.Project.Domain.dll
+D:\Proyectos\Personales\Udemy\C# CleanArchitecture\CleanArchitecture.Course.Project\src\CleanArchitecture.Course.Project.Domain\obj\Debug\net8.0\CleanArchitecture.Course.Project.Domain.pdb
+D:\Proyectos\Personales\Udemy\C# CleanArchitecture\CleanArchitecture.Course.Project\src\CleanArchitecture.Course.Project.Domain\obj\Debug\net8.0\ref\CleanArchitecture.Course.Project.Domain.dll
+D:\Proyectos\Personales\Udemy\C# CleanArchitecture\CleanArchitecture.Course.Project\src\CleanArchitecture.Course.Project.Domain\obj\Debug\net8.0\CleanArchitecture.Course.Project.Domain.csproj.AssemblyReference.cache

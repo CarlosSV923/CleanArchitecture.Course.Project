@@ -1,0 +1,35 @@
+version: '3.4'
+
+services:
+  db:
+    container_name: db
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres_1234
+      - POSTGRES_DB=clean_architecture
+    restart: unless-stopped
+    volumes:
+      - ./.containers/database:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+  
+  api:
+    container_name: api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Test
+      - ASPNETCORE_URLS=http://+:5000
+      - "ConectionStrings__Database=Host=db;Port=5432;Database=clean_architecture;Username=postgres;Password=postgres_1234"
+
+    depends_on:
+      - db
+    ports:
+      - 80:5000
+
+  serilogseq:
+    container_name: serilogseq
+    environment:
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:5341
+      - 8081:80
+

@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  db:
+    image: postgres:16.0
+  
+  api:
+    image: ${DOCKER_REGISTRY-}api
+    build:
+      context: .
+      dockerfile: src/CleanArchitecture.Course.Project.Api/Dockerfile
+    depends_on:
+      - db
+
+  serilogseq:
+    image: datalust/seq:latest
+
+#docker compose -f docker-compose.yml -f docker-compose.override.yml up -d

@@ -1,0 +1,134 @@
+# Compiled bin/ and obj/ folders
+bin/
+obj/
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Visual Studio Code
+.vscode/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sw?
+
+# Mono Auto Generated Files
+mono_crash.*
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# VS Code directories
+.vscode/
+.vscode-test/
+
+# Local History for Visual Studio
+.localhistory/
+
+# npm package directories
+node_modules/
+
+# JetBrains Rider
+.idea/
+
+# SQL Server files
+*.mdf
+*.ldf
+*.ndf
+
+# Entity Framework Core migrations
+Migrations/
+
+# Logs
+*.log
+
+# Uncomment if you have tasks that create the following database files
+# *.mdf
+# *.ldf
+# *.ndf
+
+# DotNet local global tools
+.dotnet_tools/
+
+# .NET 8 specific global tools
+.dotnet_toolpackage/
+
+# Coverage Reports
+coverage/
+*.coverage
+*.coveragexml
+
+# StyleCop
+StyleCopCache.xml
+
+# Roslyn cache files
+*.cache
+
+# Azure Pipelines
+.vsts-ci.yml
+
+# NuGet Packages
+*.nupkg
+*.snupkg
+
+# Windows Installer files
+*.msi
+*.msm
+*.msp
+
+# Rider .NET Core User Preferences
+.idea/
+
+# Local NuGet config
+NuGet.Config
+
+# .NET 8 generated files (for newer SDKs)
+Generated_Code/
+
+# Visual Studio database files
+*.v12.suo
+
+# Dotnet tool artifacts
+tools/
+
+# Static website artifacts
+wwwroot/
+
+# Skip to add test results
+TestResults/
+
+# Skip temporary files from tests
+*.TestResult.xml
+
+# Publish web projects
+*.publish.xml
+*.PublishSettings
+
+# Publish local projects
+.publish_profiles/
+.publish/
+
+# Skip XAML and WPF designer cache
+.xamlx
+.xaml*
+.designer.cs
+
+# Windows debugger
+dbg*
+.DBG/
+*.dotsettings.user
+
+.fake
