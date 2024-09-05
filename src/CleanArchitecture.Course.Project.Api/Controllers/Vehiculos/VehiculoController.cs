@@ -1,5 +1,8 @@
+using CleanArchitecture.Course.Project.Application.Vehiculos.PaginationVehiculos;
 using CleanArchitecture.Course.Project.Application.Vehiculos.SearchVehiculos;
+using CleanArchitecture.Course.Project.Domain.Entities.Abstractions;
 using CleanArchitecture.Course.Project.Domain.Entities.Permissions;
+using CleanArchitecture.Course.Project.Domain.Entities.Vehiculos;
 using CleanArchitecture.Course.Project.Infrastructure.Authentication;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -23,5 +26,18 @@ namespace CleanArchitecture.Course.Project.Api.Controllers.Vehiculos
             var result = await _mediator.Send(query, cancellationToken);
             return Ok(result.Value);
         }
+
+        [AllowAnonymous]
+        [HttpGet("searchPagination", Name = "SearchVehiculosPagination")]
+        [ProducesResponseType(typeof(PaginationResult<Vehiculo, VehiculoId>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<PaginationResult<Vehiculo, VehiculoId>>> SearchVehiculosPagination(
+            [FromQuery] PaginationVehiculosQuery query,
+            CancellationToken cancellationToken
+        )
+        {
+            var result = await _mediator.Send(query, cancellationToken);
+            return Ok(result.Value);
+        }
+        
     }
 }

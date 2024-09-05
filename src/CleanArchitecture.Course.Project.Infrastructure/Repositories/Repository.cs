@@ -1,4 +1,5 @@
 using CleanArchitecture.Course.Project.Domain.Entities.Abstractions;
+using CleanArchitecture.Course.Project.Infrastructure.Specifications;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.Course.Project.Infrastructure.Repositories
@@ -25,6 +26,29 @@ namespace CleanArchitecture.Course.Project.Infrastructure.Repositories
         )
         {
             _context.Add(entity);
+        }
+
+        public IQueryable<TEntity> ApplaySpecification(
+            ISpecification<TEntity, TEntityId> specification
+        )
+        {
+            return SpecificationEvaluator<TEntity, TEntityId>.GetQuery(_context.Set<TEntity>().AsQueryable(), specification);
+        }
+
+        public async Task<IReadOnlyList<TEntity>> GetAllWithSpecAsync(
+            ISpecification<TEntity, TEntityId> specification,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return await ApplaySpecification(specification).ToListAsync(cancellationToken);
+        }
+
+        public async Task<int> CountAsync(
+            ISpecification<TEntity, TEntityId> specification,
+            CancellationToken cancellationToken = default
+        )
+        {
+            return await ApplaySpecification(specification).CountAsync(cancellationToken);
         }
 
     }
