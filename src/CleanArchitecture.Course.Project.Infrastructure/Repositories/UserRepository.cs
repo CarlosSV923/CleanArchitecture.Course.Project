@@ -1,9 +1,13 @@
+using CleanArchitecture.Course.Project.Application.Paginations;
 using CleanArchitecture.Course.Project.Domain.Entities.Users;
 using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchitecture.Course.Project.Infrastructure.Repositories
 {
-    internal sealed class UserRepository(ApplicationDbContext context) : Repository<User, UserId>(context), IUserRepository
+    internal sealed class UserRepository(ApplicationDbContext context) : 
+        Repository<User, UserId>(context), 
+        IUserRepository,
+        IPaginationUserRepository
     {
         public Task<User?> GetByEmailAsync(Domain.Entities.Users.Email email, CancellationToken cancellationToken = default)
         {

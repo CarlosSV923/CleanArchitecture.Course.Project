@@ -1,3 +1,4 @@
+using CleanArchitecture.Course.Project.Application.Vehiculos.PaginationLinq;
 using CleanArchitecture.Course.Project.Application.Vehiculos.PaginationVehiculos;
 using CleanArchitecture.Course.Project.Application.Vehiculos.SearchVehiculos;
 using CleanArchitecture.Course.Project.Domain.Entities.Abstractions;
@@ -38,6 +39,17 @@ namespace CleanArchitecture.Course.Project.Api.Controllers.Vehiculos
             var result = await _mediator.Send(query, cancellationToken);
             return Ok(result.Value);
         }
-        
+
+        [AllowAnonymous]
+        [HttpGet("getPagination", Name = "GetVehiculosPagination")]   
+        [ProducesResponseType(typeof(PagedResult<Vehiculo, VehiculoId>), StatusCodes.Status200OK)]
+        public async Task<ActionResult<PagedResult<Vehiculo, VehiculoId>>> GetPagination(
+            [FromQuery] GetPaginationLinqQuery request,
+            CancellationToken cancellationToken
+        )
+        {
+            var result = await _mediator.Send(request, cancellationToken);
+            return Ok(result.Value);
+        }     
     }
 }

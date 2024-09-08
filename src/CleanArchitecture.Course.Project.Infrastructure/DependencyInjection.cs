@@ -1,6 +1,7 @@
 using CleanArchitecture.Course.Project.Application.Abstractions.Clock;
 using CleanArchitecture.Course.Project.Application.Abstractions.Data;
 using CleanArchitecture.Course.Project.Application.Abstractions.Email;
+using CleanArchitecture.Course.Project.Application.Paginations;
 using CleanArchitecture.Course.Project.Domain.Entities.Abstractions;
 using CleanArchitecture.Course.Project.Domain.Entities.Alquileres;
 using CleanArchitecture.Course.Project.Domain.Entities.Users;
@@ -35,7 +36,11 @@ namespace CleanArchitecture.Course.Project.Infrastructure
             });
 
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPaginationUserRepository, UserRepository>();
+            
             services.AddScoped<IVehiculoRepository, VehiculoRepository>();
+            services.AddScoped<IPaginationVehiculoRepository, VehiculoRepository>();
+            
             services.AddScoped<IAlquilerRepository, AlquilerRepository>();
 
             services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
