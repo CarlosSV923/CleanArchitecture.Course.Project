@@ -10,11 +10,13 @@ using CleanArchitecture.Course.Project.Domain.Entities.Vehiculos;
 using CleanArchitecture.Course.Project.Infrastructure.Clock;
 using CleanArchitecture.Course.Project.Infrastructure.Data;
 using CleanArchitecture.Course.Project.Infrastructure.Email;
+using CleanArchitecture.Course.Project.Infrastructure.Outbox;
 using CleanArchitecture.Course.Project.Infrastructure.Repositories;
 using Dapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Quartz;
 
 namespace CleanArchitecture.Course.Project.Infrastructure
 {
@@ -42,7 +44,17 @@ namespace CleanArchitecture.Course.Project.Infrastructure
                 }
             );
 
+            services.Configure<OutboxOptions>(configuration.GetSection("Outbox"));
 
+            services.AddQuartz();
+            services.AddQuartzHostedService(
+                options =>
+                {
+                    options.WaitForJobsToComplete = true;
+                }
+            );
+
+            services.ConfigureOptions<ProcessOutboxSetup>();
 
             services.AddTransient<IDateTimeProvider, DateTimeProvider>();
             services.AddTransient<IEmailService, EmailService>();
@@ -57,10 +69,10 @@ namespace CleanArchitecture.Course.Project.Infrastructure
 
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IPaginationUserRepository, UserRepository>();
-            
+
             services.AddScoped<IVehiculoRepository, VehiculoRepository>();
             services.AddScoped<IPaginationVehiculoRepository, VehiculoRepository>();
-            
+
             services.AddScoped<IAlquilerRepository, AlquilerRepository>();
 
             services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ApplicationDbContext>());
