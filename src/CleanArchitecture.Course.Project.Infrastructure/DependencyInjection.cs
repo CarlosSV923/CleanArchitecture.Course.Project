@@ -1,3 +1,4 @@
+using Asp.Versioning;
 using CleanArchitecture.Course.Project.Application.Abstractions.Clock;
 using CleanArchitecture.Course.Project.Application.Abstractions.Data;
 using CleanArchitecture.Course.Project.Application.Abstractions.Email;
@@ -24,6 +25,25 @@ namespace CleanArchitecture.Course.Project.Infrastructure
             IConfiguration configuration
         )
         {
+
+            services.AddApiVersioning(
+                options =>
+                {
+                    options.DefaultApiVersion = new ApiVersion(1);
+                    options.ReportApiVersions = true;
+                    options.ApiVersionReader = new UrlSegmentApiVersionReader();
+                }
+            ).AddMvc()
+            .AddApiExplorer(
+                options =>
+                {
+                    options.GroupNameFormat = "'v'VVV";
+                    options.SubstituteApiVersionInUrl = true;
+                }
+            );
+
+
+
             services.AddTransient<IDateTimeProvider, DateTimeProvider>();
             services.AddTransient<IEmailService, EmailService>();
 

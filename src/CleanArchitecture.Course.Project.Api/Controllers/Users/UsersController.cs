@@ -1,3 +1,5 @@
+using Asp.Versioning;
+using CleanArchitecture.Course.Project.Api.Utils;
 using CleanArchitecture.Course.Project.Application.Users.GetUserDapperPag;
 using CleanArchitecture.Course.Project.Application.Users.GetUserPagination;
 using CleanArchitecture.Course.Project.Application.Users.LoginUser;
@@ -11,7 +13,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace CleanArchitecture.Course.Project.Api.Controllers.Users
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [ApiVersion(ApiVersions.V1)]
+    // [ApiVersion(ApiVersions.V2)]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class UsersController(
         ISender mediator
     ) : ControllerBase
@@ -20,7 +24,8 @@ namespace CleanArchitecture.Course.Project.Api.Controllers.Users
 
         [HttpPost("login")]	
         [AllowAnonymous]
-        public async Task<IActionResult> Login([FromBody] LoginUserRequest request, CancellationToken cancellationToken)
+        [MapToApiVersion(ApiVersions.V1)]
+        public async Task<IActionResult> LoginV1([FromBody] LoginUserRequest request, CancellationToken cancellationToken)
         {
             var command = new LoginCommand(request.Email, request.Password);
             var result = await _mediator.Send(command, cancellationToken);
@@ -31,6 +36,21 @@ namespace CleanArchitecture.Course.Project.Api.Controllers.Users
 
             return Ok(result.Value);
         }
+
+        // [HttpPost("login")]	
+        // [AllowAnonymous]
+        // [MapToApiVersion(ApiVersions.V2)]
+        // public async Task<IActionResult> LoginV2([FromBody] LoginUserRequest request, CancellationToken cancellationToken)
+        // {
+        //     var command = new LoginCommand(request.Email, request.Password);
+        //     var result = await _mediator.Send(command, cancellationToken);
+        //     if (result.IsFailure)
+        //     {
+        //         return Unauthorized(result.Error);
+        //     }
+
+        //     return Ok(result.Value);
+        // }
 
         [HttpPost("register")]
         [AllowAnonymous]

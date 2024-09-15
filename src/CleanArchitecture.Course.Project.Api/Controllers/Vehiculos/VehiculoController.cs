@@ -1,3 +1,5 @@
+using Asp.Versioning;
+using CleanArchitecture.Course.Project.Api.Utils;
 using CleanArchitecture.Course.Project.Application.Vehiculos.PaginationLinq;
 using CleanArchitecture.Course.Project.Application.Vehiculos.PaginationVehiculos;
 using CleanArchitecture.Course.Project.Application.Vehiculos.SearchVehiculos;
@@ -12,7 +14,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace CleanArchitecture.Course.Project.Api.Controllers.Vehiculos
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
+    [ApiVersion(ApiVersions.V1)]
     public class VehiculoController(
         ISender mediator
     ) : ControllerBase

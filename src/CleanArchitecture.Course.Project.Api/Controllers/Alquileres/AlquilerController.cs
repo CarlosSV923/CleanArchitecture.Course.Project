@@ -1,3 +1,5 @@
+using Asp.Versioning;
+using CleanArchitecture.Course.Project.Api.Utils;
 using CleanArchitecture.Course.Project.Application.Alquileres.GetAlquiler;
 using CleanArchitecture.Course.Project.Application.Alquileres.Reservar;
 using MediatR;
@@ -5,6 +7,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CleanArchitecture.Course.Project.Api.Controllers.Alquileres
 {
+    [ApiController]
+    [ApiVersion(ApiVersions.V1)]
+    // [ApiVersion(ApiVersions.V2)]
+    [Route("api/v{version:apiVersion}/[controller]")]
     public class AlquileresController(ISender mediator) : ControllerBase
     {
         private readonly ISender _mediator = mediator;
