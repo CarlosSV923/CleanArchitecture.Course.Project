@@ -24,7 +24,7 @@ namespace CleanArchitecture.Course.Project.Api.Controllers.Alquileres
         }
 
         [HttpPost]
-        public async Task<IActionResult> ReservarAlquiler(Guid id, AlquilerReservaRequest request, CancellationToken cancellationToken)
+        public async Task<IActionResult> ReservarAlquiler(AlquilerReservaRequest request, CancellationToken cancellationToken)
         {
             var command = new ReservarAlquilerCommand
             {

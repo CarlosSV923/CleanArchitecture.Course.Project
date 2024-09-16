@@ -1,3 +1,6 @@
+using Asp.Versioning;
+using Asp.Versioning.Builder;
+using CleanArchitecture.Course.Project.Api.Controllers.Alquileres;
 using CleanArchitecture.Course.Project.Api.Documentation;
 using CleanArchitecture.Course.Project.Api.Extensions;
 using CleanArchitecture.Course.Project.Api.OptionsSetup;
@@ -39,7 +42,8 @@ builder.Services.AddSingleton<IAuthorizationPolicyProvider, AuthorizationPolicyP
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.ConfigureOptions<ConfigSwaggerOptions>();
 builder.Services.AddSwaggerGen(
-    options => {
+    options =>
+    {
         options.CustomOperationIds(type => type.ToString());
     }
 );
@@ -48,6 +52,9 @@ builder.Services.AddApplication();
 builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
+
+app.MapGet("/", () => "Hello C# .NET!");
+
 
 if (app.Environment.IsDevelopment())
 {
@@ -82,5 +89,16 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+ApiVersionSet apiVersionSet = app
+                                .NewApiVersionSet()
+                                .HasApiVersion(new ApiVersion(1))
+                                .Build();
+
+var routGroupBuilder = app.MapGroup("api/v{version:apiVersion}")
+                        .WithApiVersionSet(apiVersionSet);
+
+routGroupBuilder.MapAlquilerEndpoints();        
+
 
 app.Run();
