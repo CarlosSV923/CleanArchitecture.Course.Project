@@ -6,6 +6,8 @@ namespace CleanArchitecture.Course.Project.Domain.Entities.Users
 {
     public sealed class User : Entity<UserId>
     {
+
+        private readonly List<Role> _roles = []; 
         private User() { }
         private User(
             UserId id,
@@ -32,10 +34,13 @@ namespace CleanArchitecture.Course.Project.Domain.Entities.Users
         {
             var user = new User(UserId.New(), nombre, apellido, email, passwordHash);
             user.AddDomainEvent(new UserCreatedDomainEvent(user.Id!));
+
+            user._roles.Add(Role.Cliente);
+
             return user;
         }
 
-        public ICollection<Role>? Roles { get; set; }
+        public IReadOnlyCollection<Role>? Roles => _roles.ToList().AsReadOnly();
     }
 
 }

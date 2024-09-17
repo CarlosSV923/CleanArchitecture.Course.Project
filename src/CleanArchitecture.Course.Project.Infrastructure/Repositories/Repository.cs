@@ -25,7 +25,7 @@ namespace CleanArchitecture.Course.Project.Infrastructure.Repositories
             return await _context.Set<TEntity>().FirstOrDefaultAsync(entity => entity.Id == id, cancellationToken);
         }
 
-        public void Add(
+        public virtual void Add(
             TEntity entity
         )
         {

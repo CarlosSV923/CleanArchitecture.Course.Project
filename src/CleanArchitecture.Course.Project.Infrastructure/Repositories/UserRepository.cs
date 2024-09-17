@@ -20,5 +20,15 @@ namespace CleanArchitecture.Course.Project.Infrastructure.Repositories
             return _context.Set<User>()
                 .AnyAsync(user => user.Email == email, cancellationToken);
         }
+
+        public override void Add(User user)
+        {
+            foreach (var role in user.Roles!)
+            {
+                _context.Attach(role);
+            }
+
+            _context.Add(user);
+        }
     }
 }
