@@ -102,3 +102,5 @@ routGroupBuilder.MapAlquilerEndpoints();
 
 
 app.Run();
+
+public partial class Program;
