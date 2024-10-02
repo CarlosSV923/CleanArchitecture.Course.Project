@@ -1,4 +1,5 @@
 using Asp.Versioning;
+using CleanArchitecture.Course.Project.Application.Abstractions.Authentication;
 using CleanArchitecture.Course.Project.Application.Abstractions.Clock;
 using CleanArchitecture.Course.Project.Application.Abstractions.Data;
 using CleanArchitecture.Course.Project.Application.Abstractions.Email;
@@ -7,6 +8,7 @@ using CleanArchitecture.Course.Project.Domain.Entities.Abstractions;
 using CleanArchitecture.Course.Project.Domain.Entities.Alquileres;
 using CleanArchitecture.Course.Project.Domain.Entities.Users;
 using CleanArchitecture.Course.Project.Domain.Entities.Vehiculos;
+using CleanArchitecture.Course.Project.Infrastructure.Authentication;
 using CleanArchitecture.Course.Project.Infrastructure.Clock;
 using CleanArchitecture.Course.Project.Infrastructure.Data;
 using CleanArchitecture.Course.Project.Infrastructure.Email;
@@ -82,6 +84,9 @@ namespace CleanArchitecture.Course.Project.Infrastructure
             );
 
             SqlMapper.AddTypeHandler(new DateOnlyTypeHandler());
+
+            services.AddHttpContextAccessor();
+            services.AddScoped<IUserContext, UserContext>();
 
             return services;
         }

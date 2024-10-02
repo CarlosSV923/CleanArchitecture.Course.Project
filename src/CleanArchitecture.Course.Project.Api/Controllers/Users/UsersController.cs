@@ -2,10 +2,13 @@ using Asp.Versioning;
 using CleanArchitecture.Course.Project.Api.Utils;
 using CleanArchitecture.Course.Project.Application.Users.GetUserDapperPag;
 using CleanArchitecture.Course.Project.Application.Users.GetUserPagination;
+using CleanArchitecture.Course.Project.Application.Users.GetUserSession;
 using CleanArchitecture.Course.Project.Application.Users.LoginUser;
 using CleanArchitecture.Course.Project.Application.Users.RegisterUser;
 using CleanArchitecture.Course.Project.Domain.Entities.Abstractions;
+using CleanArchitecture.Course.Project.Domain.Entities.Permissions;
 using CleanArchitecture.Course.Project.Domain.Entities.Users;
+using CleanArchitecture.Course.Project.Infrastructure.Authentication;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,6 +24,21 @@ namespace CleanArchitecture.Course.Project.Api.Controllers.Users
     ) : ControllerBase
     {
         private readonly ISender _mediator = mediator;
+
+        [HttpGet("session")]
+        [HasPermission(Permissions.ReadUser)]
+        [MapToApiVersion(ApiVersions.V1)]
+        public async Task<IActionResult> GetSession(CancellationToken cancellationToken)
+        {
+            var query = new GetUserSessionQuery();
+            var result = await _mediator.Send(query, cancellationToken);
+            if (result.IsFailure)
+            {
+                return Unauthorized(result.Error);
+            }
+
+            return Ok(result.Value);
+        }
 
         [HttpPost("login")]	
         [AllowAnonymous]
