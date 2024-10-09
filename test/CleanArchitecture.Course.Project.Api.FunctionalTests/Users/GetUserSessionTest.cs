@@ -2,6 +2,7 @@ using System.Net;
 using System.Net.Http.Json;
 using CleanArchitecture.Course.Project.Api.FunctionalTests.Infrastructure;
 using CleanArchitecture.Course.Project.Application.Users.LoginUser;
+using CleanArchitecture.Course.Project.Application.Users.RegisterUser;
 using FluentAssertions;
 using Xunit;
 
@@ -53,6 +54,31 @@ namespace CleanArchitecture.Course.Project.Api.FunctionalTests.Users.GetUserSess
             );
 
             var request = new HttpRequestMessage(HttpMethod.Post, "api/v1/users/login")
+            {
+                Content = JsonContent.Create(requestData)
+            };
+
+            // Act
+            var response = await _client.SendAsync(request);
+
+            // Assert
+            response.StatusCode.Should().Be(HttpStatusCode.OK);
+
+        }
+
+        [Fact]
+        public async Task Register_Should_ReturnOk_When_ReqIsValid()
+        {
+            // Arrange
+            var requestData = new RegisterUserRequest()
+            {
+                Email = UserData.RegisterUserReqTest.Email!,
+                Password = UserData.RegisterUserReqTest.Password!,
+                Name = UserData.RegisterUserReqTest.Name!,
+                LastName = UserData.RegisterUserReqTest.LastName!
+            };
+
+            var request = new HttpRequestMessage(HttpMethod.Post, "api/v1/users/register")
             {
                 Content = JsonContent.Create(requestData)
             };
